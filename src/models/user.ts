@@ -12,10 +12,22 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
   },
-  addressLine1: {
+  phone:{
+    type: String,
+  },
+  addressline1: {
+    type: String,
+  },
+  addressline2: {
+    type: String,
+  },
+  postalcode: {
     type: String,
   },
   city: {
+    type: String,
+  },
+  state: {
     type: String,
   },
   country: {

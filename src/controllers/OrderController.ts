@@ -26,11 +26,16 @@ type CheckoutSessionRequest = {
     name: string;
     quantity: string;
   }[];
-  deliveryDetails: {
-    email: string;
+  deliveryDetails : {
     name: string;
-    addressLine1: string;
-    city: string;
+      email: string;
+      phone: string;
+      addressline1: string;
+      addressline2: string;
+      postalcode: string;
+      city: string;
+     state: string;
+     country: string;
   };
   restaurantId: string;
 };
@@ -123,10 +128,10 @@ const createLineItems = (
     if (!menuItem) {
       throw new Error(`Menu item not found: ${cartItem.menuItemId}`);
     }
-
+    
     const line_item: Stripe.Checkout.SessionCreateParams.LineItem = {
       price_data: {
-        currency: "gbp",
+        currency: "inr",
         unit_amount: menuItem.price,
         product_data: {
           name: menuItem.name,
@@ -156,7 +161,7 @@ const createSession = async (
           type: "fixed_amount",
           fixed_amount: {
             amount: deliveryPrice,
-            currency: "gbp",
+            currency: "inr",
           },
         },
       },
